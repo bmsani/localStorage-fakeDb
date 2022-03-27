@@ -1,9 +1,9 @@
 let db = {};
 
 const addToDb = (item) => {
-    const existData = localStorage.getItem(db)
+    const existData = localStorage.getItem('setCart');
     if(existData){
-        db = JSON.parse(db)
+        db = JSON.parse(existData)
     }
 
 
@@ -17,9 +17,14 @@ const addToDb = (item) => {
     console.log(db);
 }
 
+const removeItem = (item) => {
+    const existingData = localStorage.getItem('setCart')
+    console.log(existingData);
+    if(existingData){
+        const removedData = JSON.parse(existingData);
+        console.log(removedData);
+        delete removedData[item];
+        localStorage.setItem('setCart', JSON.stringify(removedData))
+    }
+}
 
-addToDb('kalu')
-addToDb('lalu')
-addToDb('kalu')
-addToDb('milu')
-addToDb('kalu')
